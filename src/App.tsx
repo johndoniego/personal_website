@@ -4,7 +4,7 @@ import { Home } from '@/pages/Home'
 import { Projects } from '@/pages/Projects'
 import { Skills } from '@/pages/Skills'
 import { Contact } from '@/pages/Contact'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 function AppContent() {
   return (
@@ -36,9 +36,9 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <AppContent />
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   )
 }
