@@ -3,6 +3,8 @@ import { Navigation } from '@/components/Navigation'
 import { Home } from '@/pages/Home'
 import { Projects } from '@/pages/Projects'
 import { Skills } from '@/pages/Skills'
+import { Certifications } from '@/pages/Certifications'
+import { Accomplishments } from '@/pages/Accomplishments'
 import { Contact } from '@/pages/Contact'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -15,6 +17,8 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />
+          <Route path="/certifications" element={<Certifications />} />
+          <Route path="/accomplishments" element={<Accomplishments />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

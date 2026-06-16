@@ -12,6 +12,8 @@ export function Navigation() {
     { label: 'Home', href: '/' },
     { label: 'Projects', href: '/projects' },
     { label: 'Skills', href: '/skills' },
+    { label: 'Certifications', href: '/certifications' },
+    { label: 'Accomplishments', href: '/accomplishments' },
     { label: 'Contact', href: '/contact' },
   ]
 

@@ -59,7 +59,11 @@ const projects = [
     technologies: ['TypeScript', 'React', 'Supabase', 'Firebase'],
     repositories: [
       {
-        name: 'View Project',
+        name: 'View Live',
+        url: 'https://dict-ojt.github.io/dict-travel-order-system/',
+      },
+      {
+        name: 'GitHub',
         url: 'https://github.com/dict-ojt/dict-travel-order-system',
       },
     ],

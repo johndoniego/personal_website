@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Github, Linkedin, Mail, Download, Copy, Check } from 'lucide-react'
+import { Github, Linkedin, Mail, Download, Copy, Check, X } from 'lucide-react'
+import { GlitchButton } from '@/components/ui/GlitchButton'
 import profileImg from '@/assets/profile.jpg'
 import resumePdf from '@/assets/Doniego_Resume.pdf'
 import csuLogo from '@/assets/csu-carig.png'
@@ -9,6 +10,8 @@ import pshsLogo from '@/assets/pshs-cvc.jpg'
 import dictLogo from '@/assets/dictr02.png'
 
 export function Home() {
+  const [activeZoom, setActiveZoom] = useState<string | null>(null)
+
   return (
     <div className="section-fade-in">
       {/* Hero Section */}
@@ -26,15 +29,15 @@ export function Home() {
               </div>
               <a
                 href={resumePdf}
-                download="Doniego_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full max-w-[280px]"
               >
-                <button className="glitch-btn w-full py-3.5">
-                  <span>
-                    <Download className="w-4 h-4" />
-                    Download Resume
-                  </span>
-                </button>
+                <GlitchButton
+                  className="w-full py-3.5"
+                  text="Download Resume"
+                  icon={<Download className="w-4 h-4" />}
+                />
               </a>
             </div>
 
@@ -70,20 +73,16 @@ export function Home() {
 
               <div className="flex flex-wrap gap-3">
                 <a href="https://github.com/johndoniego" target="_blank" rel="noopener noreferrer">
-                  <button className="glitch-btn">
-                    <span>
-                      <Github className="w-4 h-4" />
-                      GitHub
-                    </span>
-                  </button>
+                  <GlitchButton
+                    text="GitHub"
+                    icon={<Github className="w-4 h-4" />}
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/john-ullyses-doniego-7b0060334" target="_blank" rel="noopener noreferrer">
-                  <button className="glitch-btn">
-                    <span>
-                      <Linkedin className="w-4 h-4" />
-                      LinkedIn
-                    </span>
-                  </button>
+                  <GlitchButton
+                    text="LinkedIn"
+                    icon={<Linkedin className="w-4 h-4" />}
+                  />
                 </a>
                 <EmailCopy />
               </div>
@@ -114,7 +113,8 @@ export function Home() {
                         <img
                           src={dictLogo}
                           alt="DICT Region 02 Logo"
-                          className="w-14 h-14 object-contain rounded-lg flex-shrink-0 bg-white p-1 border shadow-sm"
+                          className="w-14 h-14 object-contain rounded-lg flex-shrink-0 bg-white p-1 border shadow-sm cursor-zoom-in hover:scale-110 transition-transform duration-300"
+                          onClick={() => setActiveZoom(dictLogo)}
                         />
                       </div>
                       <ul className="space-y-2 text-muted-foreground ml-4 list-disc">
@@ -142,7 +142,8 @@ export function Home() {
                     <img
                       src={csuLogo}
                       alt="CSU Logo"
-                      className="w-14 h-14 object-contain rounded-lg flex-shrink-0 bg-white p-1 border shadow-sm"
+                      className="w-14 h-14 object-contain rounded-lg flex-shrink-0 bg-white p-1 border shadow-sm cursor-zoom-in hover:scale-110 transition-transform duration-300"
+                      onClick={() => setActiveZoom(csuLogo)}
                     />
                   </CardContent>
                 </Card>
@@ -156,7 +157,8 @@ export function Home() {
                     <img
                       src={pshsLogo}
                       alt="PSHS Logo"
-                      className="w-14 h-14 object-contain rounded-lg flex-shrink-0 bg-white p-1 border shadow-sm"
+                      className="w-14 h-14 object-contain rounded-lg flex-shrink-0 bg-white p-1 border shadow-sm cursor-zoom-in hover:scale-110 transition-transform duration-300"
+                      onClick={() => setActiveZoom(pshsLogo)}
                     />
                   </CardContent>
                 </Card>
@@ -176,21 +178,6 @@ export function Home() {
                       <li>Also proficient in: Python (TensorFlow, OpenCV), Machine Learning</li>
                       <li>Open to: Full-stack / Frontend / Software Engineer roles</li>
                     </ul>
-                  </CardContent>
-                </Card>
-                <Card className="hover:shadow-lg transition-all duration-300 flex-1 flex flex-col justify-center">
-                  <CardContent className="pt-6">
-                    <h3 className="font-semibold mb-4 text-primary">🏆 Accomplishments</h3>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="font-semibold">DOST Scholarship Recipient</p>
-                        <p className="text-sm text-muted-foreground">2021 – 2026</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Civil Service Professional Examination — Passer</p>
-                        <p className="text-sm text-muted-foreground">Grade: 92.12</p>
-                      </div>
-                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -230,6 +217,31 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* Fullscreen Image Zoom Modal */}
+      {activeZoom && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out"
+          onClick={() => setActiveZoom(null)}
+        >
+          <div 
+            className="relative max-w-lg max-h-[80vh] w-full flex items-center justify-center p-4 rounded-xl bg-card border shadow-2xl transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-4 right-4 p-1.5 rounded-full bg-muted text-muted-foreground hover:text-foreground transition-colors z-10"
+              onClick={() => setActiveZoom(null)}
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={activeZoom}
+              alt="Zoomed Logo"
+              className="max-w-full max-h-[70vh] object-contain rounded-lg bg-white p-2"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -245,15 +257,11 @@ function EmailCopy() {
   }
 
   return (
-    <button
-      className="glitch-btn"
+    <GlitchButton
       onClick={handleCopy}
       title={email}
-    >
-      <span>
-        {copied ? <Check className="w-4 h-4 text-green-500" /> : <Mail className="w-4 h-4" />}
-        {copied ? 'Copied!' : 'Email'}
-      </span>
-    </button>
+      text={copied ? 'Copied!' : 'Email'}
+      icon={copied ? <Check className="w-4 h-4 text-green-500" /> : <Mail className="w-4 h-4" />}
+    />
   )
 }
