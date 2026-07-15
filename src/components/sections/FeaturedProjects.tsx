@@ -53,7 +53,16 @@ const projects = [
     ],
   },
   {
-    title: '🎮 GameSearch',
+    title: '� Birthday Message',
+    description: 'A festive birthday greeting website with a polished landing experience and celebratory visuals',
+    technologies: ['TypeScript', 'React', 'Vite', 'GitHub Pages'],
+    repositories: [
+      { name: 'View Live', url: 'https://johndoniego.github.io/Birthday-Message/' },
+      { name: 'GitHub Repo', url: 'https://github.com/johndoniego/Birthday-Message' },
+    ],
+  },
+  {
+    title: '�🎮 GameSearch',
     description: 'A TypeScript-based web application for searching and browsing games with modern UI',
     technologies: ['TypeScript', 'React', 'Vite'],
     repositories: [

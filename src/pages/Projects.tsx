@@ -69,6 +69,22 @@ const projects = [
     ],
   },
   {
+    title: 'Birthday Message',
+    description:
+      'A festive birthday greeting website with a polished landing experience and celebratory visuals for sharing a special message.',
+    technologies: ['TypeScript', 'React', 'CSS', 'GitHub Pages'],
+    repositories: [
+      {
+        name: 'View Live',
+        url: 'https://johndoniego.github.io/Birthday-Message/',
+      },
+      {
+        name: 'GitHub',
+        url: 'https://github.com/johndoniego/Birthday-Message',
+      },
+    ],
+  },
+  {
     title: 'Hybrid Emotion Detection System',
     description:
       'Real-time multimodal AI application combining facial recognition, text analysis, voice interaction, hand gesture detection, and AI vision with text-to-speech responses. Integrates TensorFlow, OpenCV, and Google Gemini API.',
